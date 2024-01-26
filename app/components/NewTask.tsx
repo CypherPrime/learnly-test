@@ -7,6 +7,7 @@ const NewTask: React.FC = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [dueDate, setDueDate] = useState("");
+  const [status, setStatus] = useState("pending");
 
   const dispatch = useDispatch();
 
@@ -16,7 +17,7 @@ const NewTask: React.FC = () => {
       title,
       description,
       dueDate,
-      status: "pending", // Set the initial status to 'pending'
+      status,
     };
     dispatch(addTask(task));
     // Clear form fields after submitting
@@ -40,6 +41,13 @@ const NewTask: React.FC = () => {
         value={description}
         onChange={(e) => setDescription(e.target.value)}
       />
+      <span>
+        Status:
+        <select value={status} onChange={(e: any) => setStatus(e.target.value)}>
+          <option value={"pending"}>pending</option>
+          <option value={"completed"}>completed</option>
+        </select>
+      </span>
       <input
         type="text"
         placeholder="Due Date"
