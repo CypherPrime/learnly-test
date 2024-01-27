@@ -27,7 +27,7 @@ const FilterTasks: React.FC = () => {
         alt="filter"
         src={require("../asserts/filt.png").default}
         onClick={handleFilter}
-        style={{ width: "25px", height: "25px", cursor: "pointer" }}
+        style={{ width: "30px", height: "30px", cursor: "pointer" }}
       />
     </div>
   );

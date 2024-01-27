@@ -1,12 +1,10 @@
 import { Task, SWITCH_THEME } from "./types";
 
-// Action types
 export const ADD_TASK = "ADD_TASK";
 export const FILTER_TASKS = "FILTER_TASKS";
 export const DELETE_TASK = "DELETE_TASK";
 export const UPDATE_TASK = "UPDATE_TASK";
 
-// Actions
 export const addTask = (task: Task) => ({
   type: ADD_TASK,
   payload: task,

@@ -1,5 +1,3 @@
-// components/Task.tsx
-
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { deleteTask, updateTask } from "../redux/actions";
@@ -41,7 +39,13 @@ const Task: React.FC<TaskProps> = ({ task }) => {
     <div className="card w-90 bg-gray-300 shadow-xl p-8 m-4">
       {isEditing ? (
         <>
-          <input type="text" value={editedTask} onChange={handleChange} />
+          <input
+            type="text"
+            placeholder="edit title"
+            className="input input-ghost w-40 my-1 max-w-xs mx-2 "
+            value={editedTask}
+            onChange={handleChange}
+          />
           <button onClick={handleSave}>Save</button>
           <button onClick={handleCancel}>Cancel</button>
         </>
