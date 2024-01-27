@@ -5,7 +5,6 @@ import SingleTask from "./SingleTask";
 
 const TaskList: React.FC = () => {
   const tasks = useSelector((state: RootState) => {
-    // Get the filtered tasks based on the status from the Redux store
     const { filteredTasks, tasks } = state;
     return filteredTasks.length > 0 ? filteredTasks : tasks;
   });

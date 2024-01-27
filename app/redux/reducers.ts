@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { ADD_TASK, FILTER_TASKS } from "./actions";
 import { Task, RootState, DELETE_TASK, UPDATE_TASK } from "./types";
 

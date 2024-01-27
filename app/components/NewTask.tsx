@@ -21,7 +21,7 @@ const NewTask: React.FC = () => {
       id: Math.floor(Math.random() * 100000),
     };
     dispatch(addTask(task));
-    // Clear form fields after submitting
+
     setTitle("");
     setDescription("");
     setDueDate("");
