@@ -1,10 +1,12 @@
-import { ADD_TASK, FILTER_TASKS } from "./actions";
-import { Task, RootState } from "./types";
+import { useState } from "react";
+import { ADD_TASK, FILTER_TASKS, SWITCH_THEME } from "./actions";
+import { Task, RootState, DELETE_TASK, UPDATE_TASK } from "./types";
 
 const initialState: RootState = {
   tasks: [],
   filteredTasks: [],
 };
+let theme: boolean = false;
 
 const rootReducer = (state = initialState, action: any) => {
   switch (action.type) {
@@ -26,6 +28,30 @@ const rootReducer = (state = initialState, action: any) => {
         ...state,
         filteredTasks,
       };
+    case DELETE_TASK:
+      const updatedTasksAfterDelete = state.tasks.filter(
+        (task: Task) => task.id !== action.payload
+      );
+      return {
+        ...state,
+        tasks: updatedTasksAfterDelete,
+      };
+    case UPDATE_TASK:
+      const updatedTasksAfterUpdate = state.tasks.map((task: Task) => {
+        if (task.id === action.payload.id) {
+          return {
+            ...task,
+            title: action.payload.title,
+          };
+        }
+        return task;
+      });
+      return {
+        ...state,
+        tasks: updatedTasksAfterUpdate,
+      };
+    case SWITCH_THEME:
+      theme = !theme;
     default:
       return state;
   }

@@ -9,8 +9,8 @@ import store from "./redux/store";
 const Home: React.FC = () => {
   return (
     <Provider store={store}>
-      <div>
-        <NewTask />
+      <NewTask />
+      <div className="card p-10">
         <FilterTasks />
         <TasksList />
       </div>

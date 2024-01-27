@@ -1,20 +1,75 @@
-import React from "react";
-import { Task } from "../redux/types";
+// components/Task.tsx
 
-interface SingleTaskProps {
-  task: Task;
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { deleteTask, updateTask } from "../redux/actions";
+import { Task as TaskType } from "../redux/types";
+
+interface TaskProps {
+  task: TaskType;
 }
 
-const SingleTask: React.FC<SingleTaskProps> = ({ task }) => {
+const Task: React.FC<TaskProps> = ({ task }) => {
+  const [isEditing, setIsEditing] = useState(false);
+  const [editedTask, setEditedTask] = useState(task.title);
+
+  const dispatch = useDispatch();
+
+  const handleDelete = () => {
+    dispatch(deleteTask(task.id as string));
+  };
+
+  const handleEdit = () => {
+    setIsEditing(true);
+  };
+
+  const handleSave = () => {
+    dispatch(updateTask({ ...task, title: editedTask }));
+    setIsEditing(false);
+  };
+
+  const handleCancel = () => {
+    setIsEditing(false);
+    setEditedTask(task.title);
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEditedTask(e.target.value);
+  };
+
   return (
-    <div>
-      <h3>{task.title}</h3>
-      <p>{task.description}</p>
-      <p>Due Date: {task.dueDate}</p>
-      <p>Status: {task.status}</p>
-      {/* Add additional UI for editing or marking the task as completed */}
+    <div className="card w-90 bg-gray-300 shadow-xl p-8 m-4">
+      {isEditing ? (
+        <>
+          <input type="text" value={editedTask} onChange={handleChange} />
+          <button onClick={handleSave}>Save</button>
+          <button onClick={handleCancel}>Cancel</button>
+        </>
+      ) : (
+        <>
+          <h2 className="card-title">{task.title}</h2>
+          <span className="card-actions justify-end">
+            {task.dueDate}
+            {task.status === "completed" ? (
+              <div className="badge badge-primary">{task.status}</div>
+            ) : (
+              <div className="badge badge-secondary">{task.status}</div>
+            )}
+          </span>
+          <p>{task.description}</p>
+
+          <div className="card-actions justify-end">
+            <button className="badge badge-outline" onClick={handleEdit}>
+              Edit
+            </button>
+            <button className="badge badge-outline" onClick={handleDelete}>
+              Delete
+            </button>
+          </div>
+        </>
+      )}
     </div>
   );
 };
 
-export default SingleTask;
+export default Task;
