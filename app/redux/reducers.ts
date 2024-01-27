@@ -1,12 +1,11 @@
 import { useState } from "react";
-import { ADD_TASK, FILTER_TASKS, SWITCH_THEME } from "./actions";
+import { ADD_TASK, FILTER_TASKS } from "./actions";
 import { Task, RootState, DELETE_TASK, UPDATE_TASK } from "./types";
 
 const initialState: RootState = {
   tasks: [],
   filteredTasks: [],
 };
-let theme: boolean = false;
 
 const rootReducer = (state = initialState, action: any) => {
   switch (action.type) {
@@ -50,8 +49,7 @@ const rootReducer = (state = initialState, action: any) => {
         ...state,
         tasks: updatedTasksAfterUpdate,
       };
-    case SWITCH_THEME:
-      theme = !theme;
+
     default:
       return state;
   }

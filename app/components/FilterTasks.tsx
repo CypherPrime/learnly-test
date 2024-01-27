@@ -13,7 +13,7 @@ const FilterTasks: React.FC = () => {
   };
 
   return (
-    <div className="card-actions justify-end">
+    <div className="card-actions justify-end font-color-black">
       <select
         className="select select-ghost h-10"
         value={status}

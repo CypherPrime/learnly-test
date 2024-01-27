@@ -25,6 +25,7 @@ const NewTask: React.FC = () => {
     setTitle("");
     setDescription("");
     setDueDate("");
+    setStatus("");
   };
 
   return (

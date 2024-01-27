@@ -1,11 +1,10 @@
-import { Task } from "./types";
+import { Task, SWITCH_THEME } from "./types";
 
 // Action types
 export const ADD_TASK = "ADD_TASK";
 export const FILTER_TASKS = "FILTER_TASKS";
 export const DELETE_TASK = "DELETE_TASK";
 export const UPDATE_TASK = "UPDATE_TASK";
-export const SWITCH_THEME = "SWITCH_THEME";
 
 // Actions
 export const addTask = (task: Task) => ({
@@ -29,5 +28,12 @@ export const updateTask = (updatedTask: Task) => {
   return {
     type: UPDATE_TASK,
     payload: updatedTask,
+  };
+};
+
+export const changeTheme = (theme: boolean) => {
+  return {
+    type: SWITCH_THEME,
+    payload: theme,
   };
 };

@@ -12,7 +12,7 @@ const TaskList: React.FC = () => {
 
   return (
     <div>
-      <h2 className="title">Task List</h2>
+      <h2 className="card-title text-center w-100">Task List</h2>
       {tasks.length === 0 ? (
         <p>No tasks found.</p>
       ) : (
