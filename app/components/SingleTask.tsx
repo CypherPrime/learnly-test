@@ -9,7 +9,7 @@ interface TaskProps {
 
 const Task: React.FC<TaskProps> = ({ task }) => {
   const [isEditing, setIsEditing] = useState(false);
-  const [editedTask, setEditedTask] = useState(task.title);
+  const [editTitle, seteditTitle] = useState(task.title);
 
   const dispatch = useDispatch();
 
@@ -22,17 +22,17 @@ const Task: React.FC<TaskProps> = ({ task }) => {
   };
 
   const handleSave = () => {
-    dispatch(updateTask({ ...task, title: editedTask }));
+    dispatch(updateTask({ ...task, title: editTitle }));
     setIsEditing(false);
   };
 
   const handleCancel = () => {
     setIsEditing(false);
-    setEditedTask(task.title);
+    seteditTitle(task.title);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setEditedTask(e.target.value);
+    seteditTitle(e.target.value);
   };
 
   return (
@@ -43,7 +43,7 @@ const Task: React.FC<TaskProps> = ({ task }) => {
             type="text"
             placeholder="edit title"
             className="input input-ghost w-40 my-1 max-w-xs mx-2 "
-            value={editedTask}
+            value={editTitle}
             onChange={handleChange}
           />
           <button onClick={handleSave}>Save</button>
