@@ -40,6 +40,7 @@ const rootReducer = (state = initialState, action: any) => {
           return {
             ...task,
             title: action.payload.title,
+            description: action.payload.description,
           };
         }
         return task;

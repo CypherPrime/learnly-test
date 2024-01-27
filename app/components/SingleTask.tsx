@@ -10,6 +10,7 @@ interface TaskProps {
 const Task: React.FC<TaskProps> = ({ task }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [editTitle, seteditTitle] = useState(task.title);
+  const [editDes, setEditDes] = useState(task.description);
 
   const dispatch = useDispatch();
 
@@ -22,17 +23,14 @@ const Task: React.FC<TaskProps> = ({ task }) => {
   };
 
   const handleSave = () => {
-    dispatch(updateTask({ ...task, title: editTitle }));
+    dispatch(updateTask({ ...task, title: editTitle, description: editDes }));
     setIsEditing(false);
   };
 
   const handleCancel = () => {
     setIsEditing(false);
     seteditTitle(task.title);
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    seteditTitle(e.target.value);
+    setEditDes(task.description);
   };
 
   return (
@@ -44,7 +42,18 @@ const Task: React.FC<TaskProps> = ({ task }) => {
             placeholder="edit title"
             className="input input-ghost w-40 my-1 max-w-xs mx-2 "
             value={editTitle}
-            onChange={handleChange}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              seteditTitle(e.target.value)
+            }
+          />
+          <input
+            type="text"
+            placeholder="edit title"
+            className="input input-ghost w-40 my-1 max-w-xs mx-2 "
+            value={editDes}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setEditDes(e.target.value)
+            }
           />
           <button onClick={handleSave}>Save</button>
           <button onClick={handleCancel}>Cancel</button>
