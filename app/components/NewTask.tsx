@@ -30,6 +30,7 @@ const NewTask: React.FC = () => {
 
   return (
     <div className="p-10">
+      <h1 className="text-5xl font-bold text-primary mb-2">Task Manager</h1>
       <div className="card card-compact w-100 bg-base-100 shadow-xl p-10 bg-gray-500">
         <h2 className="card-title ">Create Task</h2>
         <form onSubmit={handleSubmit}>
@@ -38,20 +39,20 @@ const NewTask: React.FC = () => {
             placeholder="Title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="input input-ghost w-50 max-w-xs mx-2 "
+            className="input input-ghost w-40 my-1 max-w-xs mx-2 "
           />
           <input
             type="text"
             placeholder="Description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            className="input input-ghost w-50 max-w-xs mx-2 "
+            className="input input-ghost w-40 my-1 max-w-xs mx-2 "
           />
 
           <select
             value={status}
             onChange={(e: any) => setStatus(e.target.value)}
-            className="select select-ghost h-12 select-sm w-50 max-w-xs"
+            className="select select-ghost h-12 select-sm w-40 my-1 max-w-xs"
           >
             <option disabled selected value={""}>
               Status
@@ -65,7 +66,7 @@ const NewTask: React.FC = () => {
             placeholder="Due Date"
             value={dueDate}
             onChange={(e) => setDueDate(e.target.value)}
-            className="input input-ghost w-50 max-w-xs mx-2 "
+            className="input input-ghost w-40 my-1 max-w-xs mx-2 "
           />
           <button type="submit" className="btn btn-primary">
             Add Task
